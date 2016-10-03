@@ -3,6 +3,7 @@ var dotenv = require('dotenv'); // package loading .env configuration files
 var request = require('request'); // initial request to get access_token
 var morgan  = require('morgan'); // get/posts requests logger/tracker
 
+// existing sandboxes so far
 var sandboxes = [
     {name: "Production", url: "https://apx.cisco.com/spvss/infinitehome/infinitetoolkit/v_sandbox_1/"},
     {name: "Dev", url: "https://apx.cisco.com/spvss/infinitehome/infinitetoolkit/v_sandbox_1/"},
@@ -13,11 +14,10 @@ var access_token;
 var token_type;
 var expires_in;
 
-// loading env variables
+// loading .env variables
 dotenv.load();
-console.log(process.env.DEFAULT_CLIENT_ID);
 
-// performing initial SSO, retreaving access_token
+// performing initial SSO, retreaving access_token, token type & expires_in parameters
 request.post({
     url: 'https://cloudsso.cisco.com/as/token.oauth2',
     form: {
@@ -33,15 +33,11 @@ request.post({
         access_token=body.access_token;
         token_type=body.token_type;
         expires_in= body.expires_in;
-
-        console.log(access_token);
-        console.log(token_type);
-        console.log(expires_in);
     }
 });
 
 
-// webserver serving the client application(s)
+// starting up webserver hosting the client SPA(s)
 var app = express();
 app.use(express.static('public'));
 app.use(morgan('dev')); //logging post/get requests to the express server
