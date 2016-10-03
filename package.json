@@ -1,0 +1,32 @@
+{
+  "name": "etestapp",
+  "version": "1.0.0",
+  "description": "IH test app",
+  "main": "server.js",
+  "dependencies": {
+    "animejs": "^1.1.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "morgan": "^1.7.0",
+    "request": "^2.75.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eglrd/IH-etest.git"
+  },
+  "keywords": [
+    "IH"
+  ],
+  "author": "etienne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eglrd/IH-etest/issues"
+  },
+  "homepage": "https://github.com/eglrd/IH-etest#readme"
+}
